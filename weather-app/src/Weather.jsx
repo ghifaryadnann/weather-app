@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import dateFormat from "dateformat";
+import Swal from "sweetalert2";
 
 const Weather = () => {
   const [data, setData] = useState({});
@@ -21,7 +22,12 @@ const Weather = () => {
       })
       .catch((error) => {
         setError("Ga Boleh Kosong")
-        alert("Data tidak ditemukan")
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          
+        });
 
       })
     setLocation("");
@@ -34,7 +40,12 @@ const Weather = () => {
 
   return (
     <div className="max-w-full max-h-screen">
-      <div className=" flex justify-center items-center bg-slate-500 w-full h-screen">
+      <div className=" flex justify-center flex-col items-center bg-slate-500 w-full h-screen">
+        <div className="p-4 text-center">
+           <h1 className="text-2xl font-black">Weather App</h1>
+          <p className="text-[10px] text-right">by ghifary adnan</p>
+        </div>
+       
         <div className="bg-amber-600 shadow-2xl rounded-2xl flex items-center justify-center flex-col text-center gap-5 p-5">
           <div className="space-x-2">
             <input className="rounded text-sm p-1 "
@@ -51,7 +62,7 @@ const Weather = () => {
             <div className="flex flex-col items-center gap-2">
 
               <div>
-                <h2 className="text-xl">
+                <h2 className="text-2xl font-black">
                   {data.name}
                 </h2>
               </div>
@@ -67,17 +78,17 @@ const Weather = () => {
               </div>
 
               <div className="">
-                <h1 className="text-2xl">
-                  {data.main.temp.toFixed()} <span>&deg;C</span>
+                <h1 className="text-[35px]">
+                  {data.main.temp.toFixed()}<span>&deg;C</span>
                 </h1>
                 <h3 className="text-sm">
                   Feels Like {data.main.feels_like.toFixed()} <span>&deg;C</span>
                 </h3>
               </div>
 
-              <div className="text-md">
+              <div className="text-md p-2 bg-gray-400 rounded-xl">
                 <h3>
-                  Wind is {data.wind.speed.toFixed()} Knots in {data.wind.deg}
+                  Wind is <span className="font-black">{data.wind.speed.toFixed()}</span> Knots in {data.wind.deg}
                   &deg;
                 </h3>
               </div>
