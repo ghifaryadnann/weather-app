@@ -42,8 +42,10 @@ const Weather = () => {
     <div className="max-w-full max-h-screen">
       <div className=" flex justify-center flex-col items-center bg-slate-500 w-full h-screen">
         <div className="p-4 text-center">
+          <h1>TESTING</h1>
            <h1 className="text-2xl font-black">Weather App</h1>
           <p className="text-[10px] text-right">by ghifary adnan</p>
+
         </div>
        
         <div className="bg-amber-600 shadow-2xl rounded-2xl flex items-center justify-center flex-col text-center gap-5 p-5">
